@@ -60,12 +60,13 @@ App.DirectionsView = Ember.View.extend({
    
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
-    var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+    
     var mapOptions = {
       zoom:7,
-      center: chicago
+      center: new google.maps.LatLng(41.850033, -87.6500523)
     };
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+
     directionsDisplay.setMap(map);
  
   }.on('didInsertElement'),
