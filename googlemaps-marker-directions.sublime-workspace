@@ -1,0 +1,271 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"goole",
+				"googleMap"
+			],
+			[
+				"posit",
+				"positionValue"
+			],
+			[
+				"progre",
+				"progressbar"
+			],
+			[
+				"sr",
+				"script"
+			],
+			[
+				"d",
+				"div"
+			],
+			[
+				"slier",
+				"slider-app"
+			],
+			[
+				"Sli",
+				"SliderApp"
+			],
+			[
+				"fo",
+				"footer"
+			],
+			[
+				"be",
+				"brevity"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/goolemaps/css/googlemap.css",
+		"/D/goolemaps/maps.js",
+		"/D/goolemaps/index.html",
+		"/D/goolemaps/googleapi.js",
+		"/D/goolemaps/js/ember-data.js",
+		"/D/bootstrap-component-ember/js/app.js",
+		"/D/bootstrap-component-ember/index - Copy.html",
+		"/D/goolemaps/handlebars.js",
+		"/D/goolemaps/jquery.js",
+		"/D/goolemaps/ember.js",
+		"/D/bootstrap-component-ember/index.html",
+		"/D/goolemaps/js/googleapi.js",
+		"/D/goolemaps/googlemap.css",
+		"/D/goolemaps/normalize.css",
+		"/D/bootstrap-component-ember/js/jquery.js",
+		"/D/bootstrap-component-ember/js/bootstrap.js",
+		"/D/bootstrap-component-ember/js/bootstrap-progressbar.js",
+		"/D/Mystique/index.html",
+		"/D/Mystique/tests/vendor/qunit-1.12.0.css",
+		"/D/Mystique/tests/vendor/qunit-1.12.0.js",
+		"/D/Mystique/tests/runner.css",
+		"/D/Mystique/tests/runner.js",
+		"/D/Mystique/tests/tests.js",
+		"/D/EmberComponent/js/router.js",
+		"/D/EmberComponent/js/models/slider.js",
+		"/D/EmberComponent/index.html",
+		"/D/EmberComponent/js/application.js",
+		"/D/EmberComponent/js/ember-data.js",
+		"/D/EmberComponent/js/jquery-1.10.2.min.js",
+		"/D/EmberComponent/js/libs/jquery-1.10.2.min.js",
+		"/D/EmberComponent/js/models/todo.js",
+		"/D/EmberComponent/js/resources/application.js",
+		"/D/EmberComponent/js/resources/router.js",
+		"/D/EmberComponent/js/ember-progressbars-0.10.1.js",
+		"/D/EmberComponent/progressbar.html",
+		"/D/EmberComponent/js/ember-0.9.8.1.min.js",
+		"/C/Users/pramodp/Downloads/jquery-ui-bootstrap-jquery-ui-bootstrap-v0.23-0-gf8f427c/jquery-ui-bootstrap-jquery-ui-bootstrap-cf2a77b/bootstrap/js/bootstrap-scrollspy.js",
+		"/C/Users/pramodp/Downloads/jquery-ui-bootstrap-jquery-ui-bootstrap-v0.5pre-0-gb0cd956/jquery-ui-bootstrap-jquery-ui-bootstrap-71f2e47/index.html",
+		"/D/EmberComponent/js/progressbar.js",
+		"/C/Users/pramodp/Downloads/jquery-ui-bootstrap-jquery-ui-bootstrap-v0.5pre-0-gb0cd956.zip",
+		"/D/EmberComponent/progresbar.html",
+		"/D/EmberComponent/js/progresbar.js",
+		"/D/EmberComponent/css/progresbar.js",
+		"/D/EmberComponent/js/bootstrap-combined.min.css",
+		"/E/support/Sublime Text 2.0.2 x64/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/D/Ember/InfantApp/index.html",
+		"/D/Ember/InfantApp/js/lib/jquery-1.10.2.min.js",
+		"/D/Ember/InfantApp/js/lib/handlebars-1.0.0.js",
+		"/D/Ember/InfantApp/style.css",
+		"/D/Ember/InfantApp/js/lib/ember-data.js",
+		"/D/Ember/InfantApp/js/lib/ember.js",
+		"/D/Ember/InfantApp/bg.png",
+		"/D/Mystique/messages.js",
+		"/D/yellow-repo/asp/MovieApp/MovieApp.sln",
+		"/D/yellow-repo/asp/MovieApp/MovieApp/MovieApp.csproj.user",
+		"/D/yellow-repo/asp/MovieApp/MovieApp/MovieApp.csproj",
+		"/D/yellow-repo/chash/webserver/YellowServer/YellowServer.csproj",
+		"/D/yellow-repo/chash/webserver/YellowServer/YellowServer.sln",
+		"/D/Code-Base/yellow-repo/chash/webserver/YellowServer/YellowServer.csproj",
+		"/D/yellow-repo/chash/webserver/README.txt",
+		"/D/Code-Base/Rss-feed/html/js/feed.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"				",
+			"						",
+			"setPosition",
+			" ",
+			"position",
+			"\nApp.IndexController = Ember.Controller.extend({\n\n	actions: {\n\n		moveByStep : function(){\n		// need to move the progress bar position by step value set as input\n		},\n\n		resetProgessBar : function(){\n			// need to reset the progress bar position to '0'\n		},\n\n		runProgressBar : function(){\n			//need to start the progress bar using interval or till the max position value specified in the input\n		}\n	}\n});",
+			"index.html",
+			"    </",
+			"progress",
+			">\n",
+			"TOkenSer",
+			"TOken",
+			"token",
+			"IToken",
+			"Token",
+			"Iaccess",
+			"HttpConnection",
+			"Connection"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true
+}
