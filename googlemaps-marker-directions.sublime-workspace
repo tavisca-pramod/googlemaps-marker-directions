@@ -43,13 +43,41 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "js/mystique-direction.js",
+			"settings":
+			{
+				"buffer_size": 3316,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1382,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/mystique-direction.css",
+			"settings":
+			{
+				"buffer_size": 342,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 311.0,
 		"selected_items":
 		[
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: in",
 				"Package Control: Install Package"
@@ -92,9 +120,11 @@
 	},
 	"file_history":
 	[
-		"/D/goolemaps/css/googlemap.css",
-		"/D/goolemaps/maps.js",
+		"/D/googlemaps-marker-directions/js/places-autocomplete.js",
 		"/D/goolemaps/index.html",
+		"/E/support/Sublime Text 2.0.2 x64/Data/Packages/DocBlockr/Base File.sublime-settings",
+		"/D/goolemaps/maps.js",
+		"/D/goolemaps/css/googlemap.css",
 		"/D/goolemaps/googleapi.js",
 		"/D/goolemaps/js/ember-data.js",
 		"/D/bootstrap-component-ember/js/app.js",
@@ -170,6 +200,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"setMarkerContent",
+			"var chicago =\n    var mapOptions = {\n      zoom:7,\n      center: chicago\n    };\n    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);\n    directionsDisplay.setMap(map);",
 			"				",
 			"						",
 			"setPosition",
@@ -205,8 +237,93 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "js/mystique-direction.js",
+					"settings":
+					{
+						"buffer_size": 3316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1641,
+								1641
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								721,
+								1350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 264.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "css/mystique-direction.css",
+					"settings":
+					{
+						"buffer_size": 342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
