@@ -20,16 +20,17 @@
   </head>
 
   <body>
-    <div id="map-canvas"></div>   
+    <div id="map-canvas" style="top:5px"></div>   
     <script type="text/x-handlebars" data-template-name="index">
-     {{view "directions"}}
+      {{view "directions" style="top:5px"}}
     </script>
     <script type="text/x-handlebars" data-template-name="map-direction">    
-      <div id="panel">
+    <div id="panel">
 
-         {{input id="start-location-input" class="controls" type="text" placeholder="Enter Start location"}}
-         {{input id="end-location-input" class="controls" type="text" placeholder="Enter End location"}}
-    </div>
-   </script>
+       {{input id="start-location-input" class="controls" type="text" placeholder="Enter Start location"}}
+       {{input id="end-location-input" class="controls" type="text" placeholder="Enter End location"}}
+   </div>
+   
+    </script>
   </body>
 </html>
