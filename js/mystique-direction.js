@@ -151,23 +151,39 @@ App.DirectionsView = Ember.View.extend({
       zoom:7,
       center: new google.maps.LatLng(41.850033, -87.6500523)
     };   
-
+/**
+ * [map map that needs to be set view map view]
+ * @type {google}
+ */
   map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
+  /**
+   * [startInput Start location input element on DOM]
+   * @type {[type]}
+   */
   var startInput = $('#start-location-input')[0];
+
+  /**
+   * [endInput Start location input element on DOM]
+   * @type {[type]}
+   */
   var endInput = $('#end-location-input')[0];
 
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(startInput);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(endInput);
   
-  var startAutoComplete = new google.maps.places.Autocomplete(startInput);
 
+  var startAutoComplete = new google.maps.places.Autocomplete(startInput);
   var endAutoComplete = new google.maps.places.Autocomplete(endInput);
   
   startAutoComplete.bindTo('bounds', map);
   endAutoComplete.bindTo('bounds', map);
     
   directionView = this;
+  
+  /**
+   * [listener to act upon place selection]
+   */
   google.maps.event.addListener(startAutoComplete, 'place_changed',function(){
 
     var place = startAutoComplete.getPlace();
@@ -188,6 +204,10 @@ App.DirectionsView = Ember.View.extend({
     directionView.set('endLocation', place.geometry.location);
   });
 
+    /**
+     * [stepMarkers reset the step markers]
+     * @type {Array}
+     */
     stepMarkers= [];
 
     directionsService = new google.maps.DirectionsService();
@@ -196,6 +216,10 @@ App.DirectionsView = Ember.View.extend({
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel($('#panel')[0]);
 
+    /**
+     * [stepDisplay infowindow for the direction markers]
+     * @type {google}
+     */
     stepDisplay = new google.maps.InfoWindow();
  
   }.on('didInsertElement'),
