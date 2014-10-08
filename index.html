@@ -5,37 +5,31 @@
     <meta charset="utf-8">
     <title>Directions service</title>
   
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places">
+    </script>    
     
     <script src="js/jquery.js"></script>
     <script src="js/handlebars.js"></script>
     <script src="js/ember.js"></script>
     <script src="js/ember-data.js"></script>  
     <script src="js/mystique-direction.js"></script>
-
   
     <link rel="stylesheet" type="text/css" href="css/mystique-direction.css">  
-    </head>
+    <link rel="stylesheet" type="text/css" href="css/auto-complete.css">
+    
+  </head>
 
   <body>
-   <div id="map-canvas"></div>   
-   <div id="directionsPanel">
-   <p>Route:</p></div>
-  <script type="text/x-handlebars" data-template-name="index">
-  {{view "directions"}}
-  </script>
-  <script type="text/x-handlebars" data-template-name="map-direction">    
-    <div id="panel">
-     <b>Start: </b>
-         {{view Ember.Select content=view.locations  optionValuePath="content.name"
-         optionLabelPath="content.displayName" prompt="Please select start location"  
-        selectionBinding = view.startLocation action =view.calcDirection}}
-      <b>End: </b>
-        {{view Ember.Select content=view.locations optionValuePath="content.name"
-        optionLabelPath="content.displayName" prompt="Please select end location"
-        selectionBinding = view.endLocation action=view.calcDirection}}
-    </div>
-   
+    <div id="map-canvas"></div>   
+    <script type="text/x-handlebars" data-template-name="index">
+     {{view "directions"}}
     </script>
+    <script type="text/x-handlebars" data-template-name="map-direction">    
+      <div id="panel">
+
+         {{input id="start-location-input" class="controls" type="text" placeholder="Enter Start location"}}
+         {{input id="end-location-input" class="controls" type="text" placeholder="Enter End location"}}
+    </div>
+   </script>
   </body>
 </html>

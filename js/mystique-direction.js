@@ -147,20 +147,54 @@ App.DirectionsView = Ember.View.extend({
    */
   initDirection: function() { 
 
+  var mapOptions = {
+      zoom:7,
+      center: new google.maps.LatLng(41.850033, -87.6500523)
+    };   
+
+  map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+
+  var startInput = $('#start-location-input')[0];
+  var endInput = $('#end-location-input')[0];
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(startInput);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(endInput);
+  
+  var startAutoComplete = new google.maps.places.Autocomplete(startInput);
+
+  var endAutoComplete = new google.maps.places.Autocomplete(endInput);
+  
+  startAutoComplete.bindTo('bounds', map);
+  endAutoComplete.bindTo('bounds', map);
+    
+  directionView = this;
+  google.maps.event.addListener(startAutoComplete, 'place_changed',function(){
+
+    var place = startAutoComplete.getPlace();
+    if (!place.geometry) {
+      return;
+    }
+    
+    directionView.set('startLocation', place.geometry.location);
+  });
+
+  google.maps.event.addListener(endAutoComplete, 'place_changed',function(){
+
+    var place = endAutoComplete.getPlace();
+      if (!place.geometry) {
+      return;
+      }
+  
+    directionView.set('endLocation', place.geometry.location);
+  });
+
     stepMarkers= [];
 
     directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer();
-    
-    var mapOptions = {
-      zoom:7,
-      center: new google.maps.LatLng(41.850033, -87.6500523)
-    };
-
-    map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer();    
 
     directionsDisplay.setMap(map);
-    directionsDisplay.setPanel($('#directionsPanel')[0]);
+    directionsDisplay.setPanel($('#panel')[0]);
 
     stepDisplay = new google.maps.InfoWindow();
  
@@ -225,8 +259,8 @@ App.DirectionsView = Ember.View.extend({
        * @type {Object}
        */
       var request = {
-        origin:this.get('startLocation').name,
-        destination: this.get('endLocation').name,
+        origin:this.get('startLocation'),
+        destination: this.get('endLocation'),
         travelMode: this.get('travelMode')
       };  
 

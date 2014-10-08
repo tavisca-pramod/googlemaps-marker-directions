@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"start",
+				"startLocation"
+			],
+			[
 				"goole",
 				"googleMap"
 			],
@@ -47,7 +51,7 @@
 			"file": "js/mystique-direction.js",
 			"settings":
 			{
-				"buffer_size": 3316,
+				"buffer_size": 6459,
 				"line_ending": "Windows"
 			}
 		},
@@ -55,7 +59,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1382,
+				"buffer_size": 1435,
 				"line_ending": "Windows"
 			}
 		},
@@ -63,7 +67,23 @@
 			"file": "css/mystique-direction.css",
 			"settings":
 			{
-				"buffer_size": 342,
+				"buffer_size": 697,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/ember.js",
+			"settings":
+			{
+				"buffer_size": 1577110,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/ember-data.js",
+			"settings":
+			{
+				"buffer_size": 278836,
 				"line_ending": "Windows"
 			}
 		}
@@ -71,9 +91,17 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 127.0,
 		"selected_items":
 		[
+			[
+				"Package Controlin",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: u",
+				"Package Control: Upgrade Package"
+			],
 			[
 				"Package Control:",
 				"Package Control: Install Package"
@@ -120,6 +148,7 @@
 	},
 	"file_history":
 	[
+		"/E/support/Sublime Text 2.0.2 x64/Data/Packages/User/Base File.sublime-settings",
 		"/D/googlemaps-marker-directions/js/places-autocomplete.js",
 		"/D/goolemaps/index.html",
 		"/E/support/Sublime Text 2.0.2 x64/Data/Packages/DocBlockr/Base File.sublime-settings",
@@ -245,15 +274,99 @@
 					"file": "js/mystique-direction.js",
 					"settings":
 					{
-						"buffer_size": 3316,
+						"buffer_size": 6459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1641,
-								1641
+								3926,
+								3926
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3611.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1435,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								865,
+								865
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 391.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "css/mystique-direction.css",
+					"settings":
+					{
+						"buffer_size": 697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								557,
+								557
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 276.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/ember.js",
+					"settings":
+					{
+						"buffer_size": 1577110,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								379,
+								384
 							]
 						],
 						"settings":
@@ -269,57 +382,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "index.html",
+					"buffer": 4,
+					"file": "js/ember-data.js",
 					"settings":
 					{
-						"buffer_size": 1382,
+						"buffer_size": 278836,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								721,
-								1350
+								748,
+								748
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 264.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "css/mystique-direction.css",
-					"settings":
-					{
-						"buffer_size": 342,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								162,
-								162
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 483.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
