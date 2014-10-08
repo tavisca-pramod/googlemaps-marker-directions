@@ -1,16 +1,33 @@
  html, body, #map-canvas {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        padding: 0px
+        float:left;
+        width:90%; 
+        height:100%;
+        margin-top: 1px;
+        margin-left: 1px             
       }
+
       #panel {
         position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
+        top: 10px;
+        left: 25%;
+        margin-left: -100px;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
+        border: 1px solid #999;
+      }
+
+      #directionsPanel
+      {        
+        width:25%;
+        height:100%;
+        position: absolute;
+        top: 5px;
+        left: 81%;
+        margin-left: -100px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        overflow-y: auto;
         border: 1px solid #999;
       }

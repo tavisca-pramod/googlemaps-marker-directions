@@ -20,19 +20,16 @@ App.ApplicationController = Ember.Controller.extend({
  */
 App.locations = [
     {
-       id:1,
        name: 'chicago, il',
        displayName: 'Chicago'
     },
 
     {
-      id: 2,
       name:'st louis, mo',
       displayName: 'St Louis'
     },
 
     {
-      id: 3,
       name:'joplin, mo',
       displayName: 'Joplin, MO'
     }];
@@ -151,7 +148,7 @@ App.DirectionsView = Ember.View.extend({
   initDirection: function() { 
 
     stepMarkers= [];
-    
+
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
     
@@ -163,6 +160,7 @@ App.DirectionsView = Ember.View.extend({
     map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
     directionsDisplay.setMap(map);
+    directionsDisplay.setPanel($('#directionsPanel')[0]);
 
     stepDisplay = new google.maps.InfoWindow();
  
