@@ -42,6 +42,15 @@
    */
     endLocation: null, 
 
+  /**
+   * directionResponse contain the response status and data from direction service
+   * @type {object}
+   */
+    directionResponse: {
+      result: null,
+      status: null
+    },
+
     /**
     * travelMode Mode of travel to be set when fetching 
     * route from directions service. 
@@ -52,6 +61,11 @@
     *                     google.maps.TravelMode.WALKING
     */
     travelMode: google.maps.TravelMode.DRIVING,
+
+    googleTravelMode: function()
+    {
+      return google.maps.TravelMode[this.get('travelMode').toUpperCase()];
+    }.property('travelMode'),
 
     /**
      * mapObservable sets map of direction service instance 
@@ -68,6 +82,10 @@
       this.calcDirection();
     }.observes('travelMode'),
     
+    onStartLocationSelect: Ember.K,
+
+    onEndLocationSelect: Ember.K,
+
     /**
      * initDirection initializes directions service
      */
@@ -138,6 +156,7 @@
         }
         
         directionView.set('startLocation', place.geometry.location);
+        directionView.onStartLocationSelect();
         directionView.calcDirection();
       });
 
@@ -149,6 +168,7 @@
           }
       
         directionView.set('endLocation', place.geometry.location);
+        directionView.onEndLocationSelect();
         directionView.calcDirection();
       });
    
@@ -227,7 +247,7 @@
         var request = {
           origin:this.get('startLocation'),
           destination: this.get('endLocation'),
-          travelMode: this.get('travelMode')
+          travelMode: this.get('googleTravelMode')
         };  
 
         /**
@@ -236,9 +256,12 @@
          */
         this.get('directionService').route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
+             
              directionView.get('directionsDisplay').setDirections(response);
-              markLocations(response);
-              directionResponse= response;
+             markLocations(response);
+              
+             directionView.get('directionResponse').status = status;
+             directionView.get('directionResponse').result = response;
           }
         });
       }
