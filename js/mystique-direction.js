@@ -15,30 +15,35 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 /**
- * [locations List of locations data to used in input for start/end select ]
- * @type {Array}
- */
-App.locations = [
-    {
-       name: 'chicago, il',
-       displayName: 'Chicago'
-    },
-
-    {
-      name:'st louis, mo',
-      displayName: 'St Louis'
-    },
-
-    {
-      name:'joplin, mo',
-      displayName: 'Joplin, MO'
-    }];
-
-/**
  * [DirectionsView View for Google Directions]
  * @type {[Ember.View]}
  */
-App.DirectionsView = Ember.View.extend({
+App.DirectionsView = Ember.View.extend(
+/**
+    * [directionsService Google maps Directions Service API]
+    * @type {[google.maps.DirectionsService]}
+    */
+    
+  new function(){
+        var directionService =  new google.maps.DirectionsService();
+        this.getDirectionService = function(){
+            return directionService;
+        }
+    },
+
+    /**
+    * [directionsDisplay Google maps DirectionsRenderer]
+    * @type {[google.maps.DirectionsRenderer]}
+    */
+  new function(){       
+    
+    var directionsDisplay = new google.maps.DirectionsRenderer();  
+        this.getDirectionsDisplay = function(){
+            return directionsDisplay;
+        }
+    },
+
+{
   templateName: 'map-direction',
   
   name: 'Google Map Directions',
@@ -66,13 +71,6 @@ App.DirectionsView = Ember.View.extend({
  * @type {[google.maps.InfoWindow]}
  */
   stepDisplay: null,
-  
-  /**
-   * [stepMarkers Array of markers to be maintained when 
-   * an route is fetched from directions response]
-   * @type {[Array]}
-   */
-  stepMarkers: null,
 
   /**
   * [travelMode Mode of travel to be set when fetching 
@@ -86,48 +84,10 @@ App.DirectionsView = Ember.View.extend({
   travelMode: google.maps.TravelMode.DRIVING,
 
   /**
-  * [locations locations array to be used for start and end location options]
-  * @type {[Array]}
-  */
-  locations: App.locations,
-
-  /**
-   * [directionsService Google maps Directions Service API]
-   * @type {[google.maps.DirectionsService]}
-   */
-  directionsService: null,
-  
-  /**
-   * [directionsDisplay Google maps DirectionsRenderer]
-   * @type {[google.maps.DirectionsRenderer]}
-   */
-  directionsDisplay: null,
-
-  /**
-  * [directionResponse Response form the directions service ]
-  * @type {[object]}
-  */
-  directionResponse: null,
-
-/**
- * [startLocationObservable calculates routes when Start location is changed]
- */
-  startLocationObservable: function() {
-    this.calcDirection();
-  }.observes('startLocation'),
-
-  /**
-   * [endLocationObservable calculates routes when End location is changed]
-   */
-  endLocationObservable: function() {
-    this.calcDirection();
-  }.observes('endLocation'),
-
-  /**
    * [mapObservable sets map of direction service instance when map property is changed]
    */
   mapObservable: function() {
-    directionsDisplay.setMap(map);
+    this.getDirectionsDisplay().setMap(this.get('map'));
   }.observes('map'),
 
   /**
@@ -136,85 +96,72 @@ App.DirectionsView = Ember.View.extend({
   travelModeObservable: function() {
     this.calcDirection();
   }.observes('travelMode'),
-
-  directionResponseObservable: function() {
-    // raise an event that response has come
-  }.observes('directionResponse'),
-
+  
   /**
    * [initDirection initializes directions service]
    * @return {[type]} [description]
    */
   initDirection: function() { 
 
-  var mapOptions = {
+    var mapOptions = {
       zoom:7,
       center: new google.maps.LatLng(41.850033, -87.6500523)
     };   
-/**
- * [map map that needs to be set view map view]
- * @type {google}
- */
-  map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+    /**
+    * [map map that needs to be set view map view]
+    * @type {google}
+    */
+    this.set('map', new google.maps.Map($('#map-canvas')[0], mapOptions));
 
-  /**
-   * [startInput Start location input element on DOM]
-   * @type {[type]}
-   */
-  var startInput = $('#start-location-input')[0];
-
-  /**
-   * [endInput Start location input element on DOM]
-   * @type {[type]}
-   */
-  var endInput = $('#end-location-input')[0];
-
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(startInput);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(endInput);
-  
-
-  var startAutoComplete = new google.maps.places.Autocomplete(startInput);
-  var endAutoComplete = new google.maps.places.Autocomplete(endInput);
-  
-  startAutoComplete.bindTo('bounds', map);
-  endAutoComplete.bindTo('bounds', map);
-    
-  directionView = this;
-  
-  /**
-   * [listener to act upon place selection]
-   */
-  google.maps.event.addListener(startAutoComplete, 'place_changed',function(){
-
-    var place = startAutoComplete.getPlace();
-    if (!place.geometry) {
-      return;
-    }
-    
-    directionView.set('startLocation', place.geometry.location);
-  });
-
-  google.maps.event.addListener(endAutoComplete, 'place_changed',function(){
-
-    var place = endAutoComplete.getPlace();
-      if (!place.geometry) {
-      return;
-      }
-  
-    directionView.set('endLocation', place.geometry.location);
-  });
+    this.getDirectionsDisplay().setMap(this.get('map'));
+    this.getDirectionsDisplay().setPanel($('#panel')[0]);
+    /**
+     * [startInput Start location input element on DOM]
+     * @type {[type]}
+     */
+    var startInput = $('#start-location-input')[0];
 
     /**
-     * [stepMarkers reset the step markers]
-     * @type {Array}
+     * [endInput Start location input element on DOM]
+     * @type {[type]}
      */
-    stepMarkers= [];
+    var endInput = $('#end-location-input')[0];
 
-    directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer();    
+    this.get('map').controls[google.maps.ControlPosition.TOP_LEFT].push(startInput);
+    this.get('map').controls[google.maps.ControlPosition.TOP_LEFT].push(endInput);
+    
+    var startAutoComplete = new google.maps.places.Autocomplete(startInput);
+    var endAutoComplete = new google.maps.places.Autocomplete(endInput);
+    
+    startAutoComplete.bindTo('bounds', this.get('map'));
+    endAutoComplete.bindTo('bounds',this.get('map'));
+      
+    directionView = this;
+    
+    /**
+     * [listener to act upon place selection]
+     */
+    google.maps.event.addListener(startAutoComplete, 'place_changed',function(){
 
-    directionsDisplay.setMap(map);
-    directionsDisplay.setPanel($('#panel')[0]);
+      var place = startAutoComplete.getPlace();
+      if (!place.geometry) {
+        return;
+      }
+      
+      directionView.set('startLocation', place.geometry.location);
+      directionView.calcDirection();
+    });
+
+    google.maps.event.addListener(endAutoComplete, 'place_changed',function(){
+
+      var place = endAutoComplete.getPlace();
+        if (!place.geometry) {
+        return;
+        }
+    
+      directionView.set('endLocation', place.geometry.location);
+      directionView.calcDirection();
+    });
 
     /**
      * [stepDisplay infowindow for the direction markers]
@@ -230,6 +177,13 @@ App.DirectionsView = Ember.View.extend({
   calcDirection : function() { 
     
     /**
+    * [stepMarkers Array of markers to be maintained when 
+    * an route is fetched from directions response]
+    * @type {[Array]}
+    */
+    var stepMarkers= [];
+
+    /**
      * [setMarkerContent sets marker content on the marker and attaches an event for infowindow]
      * @param {[type]} marker [marker instance to set content on]
      * @param {[type]} text   [content to be set on passed marker instance]
@@ -239,7 +193,7 @@ App.DirectionsView = Ember.View.extend({
         
         stepDisplay.setContent(text);
         
-        stepDisplay.open(map, marker);
+        stepDisplay.open(directionView.get('map'), marker);
       });
     };
 
@@ -257,7 +211,7 @@ App.DirectionsView = Ember.View.extend({
     
         var marker = new google.maps.Marker({
           position: selectedRoute.steps[i].start_location,
-          map: map
+          map: directionView.get('map')
         });
 
         setMarkerContent(marker, selectedRoute.steps[i].instructions);
@@ -292,11 +246,11 @@ App.DirectionsView = Ember.View.extend({
        * [fetches the route based on the request instance passed.
        * On success we set the markers]
        */
-      directionsService.route(request, function(response, status) {
+      this.getDirectionService().route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
-          directionsDisplay.setDirections(response);
-          markLocations(response);
-          directionResponse= response;
+           directionView.getDirectionsDisplay().setDirections(response);
+            markLocations(response);
+            directionResponse= response;
         }
       });
     }
