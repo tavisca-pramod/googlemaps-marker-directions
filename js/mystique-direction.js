@@ -19,30 +19,6 @@
    * @type {Ember.View}
    */
   App.DirectionsView = Ember.View.extend(
-        
-    /**
-    * directionsService Google maps Directions Service API
-    * @type {google.maps.DirectionsService}
-    */
-    new function(){
-          var directionService =  new google.maps.DirectionsService();
-          this.getDirectionService = function(){
-              return directionService;
-          }
-      },
-
-    /**
-    * directionsDisplay Google maps DirectionsRenderer
-    * @type {google.maps.DirectionsRenderer}
-    */
-    new function(){       
-      
-      var directionsDisplay = new google.maps.DirectionsRenderer();  
-          this.getDirectionsDisplay = function(){
-              return directionsDisplay;
-          }
-      },
-
   {
     templateName: 'map-direction',
     
@@ -82,7 +58,7 @@
      * when map property is changed
      */
     mapObservable: function() {
-      this.getDirectionsDisplay().setMap(this.get('map'));
+      this.get('directionsDisplay').setMap(this.get('map'));
     }.observes('map'),
 
     /**
@@ -97,8 +73,25 @@
      */
     initDirection: function() { 
 
+      /**
+      * stepMarkers Array of markers to be maintained when 
+      * an route is fetched from directions response
+      * @type {Array}
+      */
       this.set('stepMarkers',[]);
+      
+      /**
+      * directionsService Google maps Directions Service API
+      * @type {google.maps.DirectionsService}
+      */
+      this.set('directionService',  new google.maps.DirectionsService());
 
+      /**
+      * directionsDisplay Google maps DirectionsRenderer
+      * @type {google.maps.DirectionsRenderer}
+      */
+      this.set('directionsDisplay', new google.maps.DirectionsRenderer());
+  
       var mapOptions = {
         zoom:7,
         center: new google.maps.LatLng(41.850033, -87.6500523)
@@ -109,8 +102,8 @@
       */
       this.set('map', new google.maps.Map($('#map-canvas')[0], mapOptions));
 
-      this.getDirectionsDisplay().setMap(this.get('map'));
-      this.getDirectionsDisplay().setPanel($('#panel')[0]);
+      this.get('directionsDisplay').setMap(this.get('map'));
+      this.get('directionsDisplay').setPanel($('#panel')[0]);
       /**
        * startInput Start location input element on DOM
        * @type {type}
@@ -167,14 +160,6 @@
      */
     calcDirection : function() { 
       
-      /**
-      * stepMarkers Array of markers to be maintained when 
-      * an route is fetched from directions response
-      * @type {Array}
-      */
-       
-      this.set('stepMarkers',[]);
-
       /**
        * stepMarkerInfoWindow infowindow for the direction markers
        * @type {google}
@@ -249,9 +234,9 @@
          * fetches the route based on the request instance passed.
          * On success we set the markers
          */
-        this.getDirectionService().route(request, function(response, status) {
+        this.get('directionService').route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
-             directionView.getDirectionsDisplay().setDirections(response);
+             directionView.get('directionsDisplay').setDirections(response);
               markLocations(response);
               directionResponse= response;
           }
