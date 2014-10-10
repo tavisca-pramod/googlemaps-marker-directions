@@ -1,0 +1,50 @@
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.maps {
+	height: 500px;
+	width: 800px;
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, #map-canvas {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+
+.elevate {
+	z-index: 5;
+}
+
+.sidebar {
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid black;
+	display: inline-block;
+	overflow: hidden;
+    background-color: white;
+}
+
+.absPosition {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.blocks {
+    display: inline-block;
+    margin: 5px;
+}
+
+.square {
+	height: 10px;
+	width: 10px;
+	background-color: red;
+}

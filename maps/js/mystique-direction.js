@@ -2,18 +2,6 @@
    * Google Directions Application
    * @type {type}
    */
-  window.App = Ember.Application.create();
-
-  App.ApplicationRoute = Ember.Route.extend({
-    setupController: function(controller) {
-      controller.set('title', "Directions service!");
-    }
-  });
-
-  App.ApplicationController = Ember.Controller.extend({
-    appName: 'Google Map Directions'
-  });
-
   /**
    * DirectionsView View for Google Directions
    * @type {Ember.View}
@@ -21,15 +9,11 @@
   App.DirectionsView = Ember.View.extend(
   {
     templateName: 'map-direction',
-    
-    name: 'Google Map Directions',
-
   /**
    * map Map to be used for initialize directions api
    * @type {google.maps.Map}
    */
     map: null,
-
   /**
    * startLocation Start Location for calculating route
    * @type {object}
@@ -62,18 +46,16 @@
     */
     travelMode: google.maps.TravelMode.DRIVING,
 
+    actions: {
+      toggleButtonClicked: function() {
+        this.$('.panel').toggleClass('hide');
+      }
+    },
+
     googleTravelMode: function()
     {
       return google.maps.TravelMode[this.get('travelMode').toUpperCase()];
     }.property('travelMode'),
-
-    /**
-     * mapObservable sets map of direction service instance 
-     * when map property is changed
-     */
-    mapObservable: function() {
-      this.get('directionsDisplay').setMap(this.get('map'));
-    }.observes('map'),
 
     /**
      * travelModeObservable calculates route when travel mode is changed 
@@ -87,7 +69,7 @@
     onEndLocationSelect: Ember.K,
 
     /**
-     * initDirection initializes directions service
+     * initDirection initializes directions service on map load
      */
     initDirection: function() { 
 
@@ -110,33 +92,25 @@
       */
       this.set('directionsDisplay', new google.maps.DirectionsRenderer());
   
-      var mapOptions = {
-        zoom:7,
-        center: new google.maps.LatLng(41.850033, -87.6500523)
-      };   
-      /**
-      * map map that needs to be set view map view
-      * @type {google}
-      */
-      this.set('map', new google.maps.Map($('#map-canvas')[0], mapOptions));
-
       this.get('directionsDisplay').setMap(this.get('map'));
-      this.get('directionsDisplay').setPanel($('#panel')[0]);
+      this.get('directionsDisplay').setPanel($('.panel')[0]);
       /**
        * startInput Start location input element on DOM
        * @type {type}
        */
-      var startInput = $('#start-location-input')[0];
+      var startInput = $('.start-location-input')[0];
 
       /**
        * endInput Start location input element on DOM
        * @type {type}
        */
-      var endInput = $('#end-location-input')[0];
+      var endInput = $('.end-location-input')[0];
 
-      this.get('map').controls[google.maps.ControlPosition.TOP_LEFT].push(startInput);
-      this.get('map').controls[google.maps.ControlPosition.TOP_LEFT].push(endInput);
-      this.get('map').controls[google.maps.ControlPosition.TOP_RIGHT].push($('#panel')[0]);
+      this.get('map').controls[google.maps.ControlPosition.RIGHT].push(this.get('element'));
+
+      this.get('map').controls[google.maps.ControlPosition.TOP_CENTER].push(startInput);
+      this.get('map').controls[google.maps.ControlPosition.TOP_CENTER].push(endInput);
+      
       
       var startAutoComplete = new google.maps.places.Autocomplete(startInput);
       var endAutoComplete = new google.maps.places.Autocomplete(endInput);
@@ -172,8 +146,9 @@
         directionView.onEndLocationSelect();
         directionView.calcDirection();
       });
-   
-    }.on('didInsertElement'),
+
+      this.$().toggleClass('directions-view-height');
+    }.observes('map'),
     
     /** 
      * calcDirection  calculates routes based on Start location,
