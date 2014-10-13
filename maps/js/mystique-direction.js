@@ -44,7 +44,16 @@
     *                     google.maps.TravelMode.TRANSIT,
     *                     google.maps.TravelMode.WALKING
     */
-    travelMode: google.maps.TravelMode.DRIVING,
+    travelMode: "Driving",
+
+    /**
+     * travelModes possible travel modes
+     * @type {Array}
+     */
+    travelModes: [{ Value: "Driving"},
+                  { Value: "Walking"},
+                  { Value: "Bicycling"},
+                  { Value: "Transit"}],
 
     actions: {
       toggleButtonClicked: function() {
@@ -110,6 +119,7 @@
 
       this.get('map').controls[google.maps.ControlPosition.TOP_CENTER].push(startInput);
       this.get('map').controls[google.maps.ControlPosition.TOP_CENTER].push(endInput);
+      this.get('map').controls[google.maps.ControlPosition.TOP_CENTER].push($('.travel-modes')[0]);
       
       
       var startAutoComplete = new google.maps.places.Autocomplete(startInput);

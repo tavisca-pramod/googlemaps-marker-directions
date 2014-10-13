@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Starter</title>
-  	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/mystique-direction.css">  
+    <meta charset="UTF-8">
+    <title>Starter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/mystique-direction.css">
     <link rel="stylesheet" type="text/css" href="css/auto-complete.css">
-  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
+
 <body>
-	<script type="text/x-handlebars">
+    <script type="text/x-handlebars">
         {{view "App.MapView" class="blocks"}}
-	</script>
+    </script>
 
     <script type="text/x-handlebars" data-template-name="map">
-        {{view "App.GmapView" viewName="mapInstance"}}
-		{{view "App.FilterView" map=view.mapInstance.map}}
-        {{view "App.HomeButtonView" map=view.mapInstance.map 
-        							lat=view.mapInstance.lat 
-        							lng=view.mapInstance.lng
-        							zoom=view.mapInstance.zoom}}
-        {{view "App.DirectionsView" map=view.mapInstance.map}}
+        {{view "App.GmapView" viewName="mapInstance"}} {{view "App.FilterView" map=view.mapInstance.map}} {{view "App.HomeButtonView" map=view.mapInstance.map lat=view.mapInstance.lat lng=view.mapInstance.lng zoom=view.mapInstance.zoom}} {{view "App.DirectionsView" map=view.mapInstance.map}}
     </script>
 
-	<script type="text/x-handlebars" data-template-name="filter">
-		<p style="margin: 10px">
-            <button {{action "toggleButtonClicked" target="view"}}>Toggle</button>
-		</p>
-		<div class="square hide"></div>
-		<div class="sidebar">
-			{{#each item in view.filters}}
-				<p>
-					<label>
-                        {{input type="checkbox" name=item.name checked=item.isChecked}}
-                        {{item.name}}
-					</label>
-				</p>
-			{{/each}}
-		</div>
-	</script>
+    <script type="text/x-handlebars" data-template-name="filter">
+        <p style="margin: 10px">
+            <button {{action "toggleButtonClicked" target="view" }}>Toggle</button>
+        </p>
+        <div class="square hide"></div>
+        <div class="sidebar">
+            {{#each item in view.filters}}
+            <p>
+                <label>
+                    {{input type="checkbox" name=item.name checked=item.isChecked}} {{item.name}}
+                </label>
+            </p>
+            {{/each}}
+        </div>
+    </script>
 
     <script type="text/x-handlebars" data-template-name="map-direction">
-		<p class = "route-button">
-            <button {{action "toggleButtonClicked" target="view"}}>Route</button>
-		</p>    
-    	<div class="panel hide"></div>	
-		{{input class="start-location-input controls" type="text" placeholder="Enter Start location"}}
-	    {{input class="end-location-input controls" type="text" placeholder="Enter End location"}}
+        <p class="route-button">
+            <button {{action "toggleButtonClicked" target="view" }}>Route</button>
+        </p>
+        <div class="panel hide"></div>
+        {{input class="start-location-input controls" type="text" placeholder="Enter Start location"}}
+        {{input class="end-location-input controls" type="text" placeholder="Enter End location"}} 
+        {{view Ember.Select class="travel-modes" content=view.travelModes 
+        	optionValuePath="content.Value" optionLabelPath="content.Value" 
+        	selectionBinding=travelMode  valueBinding=travelMode}}
     </script>
 
-	<script type="text/x-handlebars" data-template-name="homeButton">
+    <script type="text/x-handlebars" data-template-name="homeButton">
         Home
-	</script>
-	<script src="js/libs/jquery-1.10.2.min.js"></script>
-	<script src="js/libs/handlebars-1.0.0.js"></script>
-	<script src="js/libs/ember.js"></script>
-	<script src="js/libs/ember-data.js"></script>
+    </script>
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    <script src="js/libs/handlebars-1.0.0.js"></script>
+    <script src="js/libs/ember.js"></script>
+    <script src="js/libs/ember-data.js"></script>
     <script src="google.js"></script>
 
-	
-	<script src="js/application.js"></script>
-	<script src="js/router.js"></script>
+
+    <script src="js/application.js"></script>
+    <script src="js/router.js"></script>
     <script src="js/initFiltersAndData.js"></script>
     <script src="js/mystique-direction.js"></script>
 </body>
+
 </html>
