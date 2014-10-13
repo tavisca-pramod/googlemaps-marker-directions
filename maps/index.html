@@ -44,7 +44,7 @@
         {{input class="end-location-input controls" type="text" placeholder="Enter End location"}} 
         {{view Ember.Select class="travel-modes" content=view.travelModes 
         	optionValuePath="content.Value" optionLabelPath="content.Value" 
-        	selectionBinding=travelMode  valueBinding=travelMode}}
+        	valueBinding=view.travelMode}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="homeButton">
